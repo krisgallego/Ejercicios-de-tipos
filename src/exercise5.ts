@@ -1,13 +1,24 @@
 // Ejercicio 5
 
-type Cambio = "nombre" | "correo" | "password";
+type Cambio = {
+    tipo: "nombre" | "correo" | "password"
+};
 
-function contar(cambios: Cambio[]) {
-    let res = { nombre: 0, correo: 0, password: 0 };
+function resumenCambios(cambios: Cambio[]) {
+    let resultado = {nombre: 0, correo: 0, password: 0,};
 
-    cambios.forEach(c => res[c]++);
+    cambios.forEach(c => {
+        resultado[c.tipo]++;
+    });
 
-    return res;
+    return resultado;
 }
 
-console.log("5:", contar(["nombre", "password", "nombre"]));
+const cambios: Cambio[] = [
+    { tipo: "nombre" },
+    { tipo: "correo" },
+    { tipo: "nombre" },
+    { tipo: "password" },
+];
+
+console.log(resumenCambios(cambios));
